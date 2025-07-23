@@ -43,12 +43,7 @@ Questa è una REST API sviluppata con Flask per la gestione di negozi, articoli,
 ## Test API
 Puoi testare gli endpoint con strumenti come Insomnia o Postman.
 
-## Note
-- I file temporanei, database e virtualenv sono esclusi dal versionamento tramite `.gitignore`.
-- Per il push su GitHub usa un Personal Access Token come password.
-
-## Autore
-Alberto Mingardi
+---
 
 ## 📌 Cosa devi fare ogni volta che lavori
 
@@ -95,3 +90,28 @@ git push origin master
 | Fai commit                  | git commit -m "Messaggio commit" |
 | Aggiorna repo Mingardi      | git push mingardi master       |
 | Aggiorna repo Autec         | git push autec master          |
+
+---
+
+## 🔄 Iter dei comandi su VSCode per salvare le modifiche su entrambi gli account GitHub
+
+1. **Aggiorna il tuo locale da entrambi i remoti (prima di lavorare):**
+   ```sh
+   git pull mingardi master
+   git pull autec master
+   ```
+2. **Stagia tutte le modifiche:**
+   ```sh
+   git add .
+   ```
+3. **Fai commit con un messaggio descrittivo:**
+   ```sh
+   git commit -m "Descrizione chiara delle modifiche"
+   ```
+4. **Push su entrambi i remoti:**
+   ```sh
+   git push mingardi master
+   git push autec master
+   ```
+
+> Ricorda: esegui sempre `git pull` da entrambi i remoti prima di lavorare localmente per evitare conflitti.
