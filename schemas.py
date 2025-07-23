@@ -47,3 +47,4 @@ class UserSchema(Schema):
     id = fields.Int(dump_only=True)  #qui definiamo il campo 'id' come intero e lo rendiamo solo in output
     username = fields.Str(required=True)  #qui definiamo il campo 'username' come stringa e lo rendiamo obbligatorio
     password = fields.Str(required=True, load_only=True)  #qui definiamo il campo 'password' come stringa e lo rendiamo obbligatorio, ma solo in input
+
