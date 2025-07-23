@@ -80,7 +80,7 @@ Fai push su entrambi i remoti:
 # Push su Mingardi
 git push mingardi master
 # Push su Autec
-git push autec master
+git push origin master
 ```
 
 ---
