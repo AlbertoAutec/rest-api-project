@@ -1,0 +1,10 @@
+{
+    // Impostazioni consigliate per l'ambiente Python e VS Code
+    "python.defaultInterpreterPath": ".venv/bin/python3",
+    "python.venvPath": "${workspaceFolder}",
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true
+}
