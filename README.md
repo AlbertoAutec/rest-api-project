@@ -49,3 +49,49 @@ Puoi testare gli endpoint con strumenti come Insomnia o Postman.
 
 ## Autore
 Alberto Mingardi
+
+## 📌 Cosa devi fare ogni volta che lavori
+
+Ecco lo schema universitario/didattico con i comandi essenziali e il flusso tipico:
+
+### ✨ Fase 1 – Aggiorna il tuo locale con eventuali modifiche fatte online
+Se hai modificato file direttamente su GitHub (web o altro computer), prima di lavorare localmente scarica gli aggiornamenti:
+
+```sh
+cd ~/Desktop/rest-Api-project
+# Aggiorna dal remote Mingardi
+git pull mingardi master
+# (Opzionale) Aggiorna da altro remote
+# git pull autec master
+```
+
+### ✨ Fase 2 – Lavora localmente
+Modifica i file, aggiungi/rimuovi/sposta contenuti. Quando hai finito:
+
+```sh
+git add .
+git commit -m "Descrizione chiara delle modifiche"
+```
+
+### ✨ Fase 3 – Aggiorna entrambe le repo online
+Fai push su entrambi i remoti:
+
+```sh
+# Push su Mingardi
+git push mingardi master
+# Push su Autec
+git push autec master
+```
+
+---
+
+## ✅ Riepilogo comandi tipici
+
+| Azione                      | Comando                        |
+|-----------------------------|--------------------------------|
+| Vai nella cartella locale   | cd ~/Desktop/rest-Api-project  |
+| Aggiorna locale da Mingardi | git pull mingardi master       |
+| Stagia modifiche            | git add .                      |
+| Fai commit                  | git commit -m "Messaggio commit" |
+| Aggiorna repo Mingardi      | git push mingardi master       |
+| Aggiorna repo Autec         | git push autec master          |
