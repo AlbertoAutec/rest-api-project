@@ -5,8 +5,30 @@ services:
     #nome del servizio
     build: . #costruisce l'immagine Docker usando il Dockerfile nella directory corrente
     ports:
-      # mappa la porta 5000 del container alla porta 5001 dell'host
-      - "5001:5000"
+      # mappa la porta 80 del container alla porta 5001 dell'host
+      - "5001:80"
+    depends_on:
+      db:
+        # specifica che il servizio web dipende dal servizio db
+        condition: service_healthy # attende che il servizio db sia sano
+    env_file:
+      - ./.env # carica le variabili d'ambiente dal file .env
     volumes:
       # mappa la directory corrente all'interno del container
       - .:/app
+  db:
+    # definisce il servizio del database
+    image: postgres:latest # usa l'immagine ufficiale di PostgreSQL
+    environment:
+      POSTGRES_PASSWORD: password # variabile d'ambiente per la password del database
+      POSTGRES_DB: myapp # variabile d'ambiente per il nome del database
+    ports:
+      - "5432:5432" # mappa la porta 5432 del container alla porta 5432 dell'host
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # persiste i dati del database in un volume
+    healthcheck:
+      test: pg_isready -d $${POSTGRES_DB} -U postgres # verifica la salute del database
+      interval: 2s # intervallo tra i controlli di salute
+      retries: 10 # numero di tentativi prima di considerare il servizio non sano
+volumes:
+  postgres_data: # definisce il volume per i dati del database

@@ -6,7 +6,7 @@ COPY . .
 #ENV FLASK_APP=app.py
 #ENV DATABASE_URL=postgresql://user:password@host:port/dbname
 #RUN flask db upgrade
-CMD ["gunicorn", "--bind", "0.0.0.0:80", "app:create_app()"]
+CMD ["/bin/bash", "docker-entrypoint.sh"]
 
 
 #questo file definisce l'immagine Docker per l'applicazione Flask

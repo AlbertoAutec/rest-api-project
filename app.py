@@ -23,7 +23,10 @@ def create_app(db_url=None): #qui definiamo la funzione per creare l'applicazion
     app.config["OPENAPI_SWAGGER_UI_URL"] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"  #qui impostiamo l'URL per caricare Swagger UI   
     app.config["PROPAGATE_EXCEPTIONS"] = True  #qui impostiamo la propagazione delle eccezioni per Flask-Smorest
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  #qui disabilitiamo il tracciamento delle modifiche di SQLAlchemy
-    app.config["SQLALCHEMY_DATABASE_URI"] = db_url or os.getenv("DATABASE_URL", "sqlite:///data.db")  #qui impostiamo l'URI del database, utilizzando un valore predefinito se non è specificato
+    db_uri = os.environ.get("SQLALCHEMY_DATABASE_URI")
+    if not db_uri:
+        raise RuntimeError("La variabile d'ambiente SQLALCHEMY_DATABASE_URI non è impostata.")
+    app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     db.init_app(app)  #qui inizializziamo l'applicazione Flask con il database
     migrate = Migrate(app, db)  #qui inizializziamo Migrate per gestire le migrazioni del database
     api = Api(app) #qui creiamo l'istanza dell'API RESTful
